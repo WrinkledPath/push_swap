@@ -68,14 +68,24 @@ static int		error_syntax(char *argv)
 
 int		stack_len(Node *curr)
 {
-	int i;
+	int	up;
+	int	down;
+	Node *p_prev;
 
-	i = 0;
-	while (curr != NULL)
+	up = 0;
+	down = 0;
+	if (curr)
+		p_prev = curr->prev;
+	while (p_prev)
 	{
-		i++;
+		p_prev = p_prev->prev;
+		up++;
+	}
+	while (curr)
+	{
+		down++;
 		curr = curr->next;
 	}
-	return (i);
+	return (up + down);
 }
 

@@ -115,6 +115,8 @@ static Node	*set_cheapest(Node *stack_b)
 	{
 		if (stack_b->push_price < min->push_price)
 			min = stack_b;
+		if (stack_b->cheapest)
+			stack_b->cheapest = false;
 		stack_b = stack_b->next;
 	}
 	min->cheapest = true;

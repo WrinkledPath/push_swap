@@ -8,6 +8,8 @@ OBJ = $(SRC:.c=.o)
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS += -I/usr/lib/modules/6.1.52-valve16-1-neptune-61/build/include/uapi \
+          -I/usr/lib/modules/6.1.52-valve16-1-neptune-61/build/include
 
 # Paths to libraries and includes
 LIBFT_DIR = ./local_includes/Libft

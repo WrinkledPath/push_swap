@@ -16,5 +16,7 @@ int	main(int argc, char **argv)
 	init_stack_a(&stack_a, argv);
 	assign_index(stack_a);
 	sort_pipe(&stack_a, &stack_b);
+	free_list(&stack_a);
+	free_list(&stack_b);
 	return (0);
 }

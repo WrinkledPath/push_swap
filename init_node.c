@@ -16,19 +16,16 @@ void	init_stack_a(Node **head, char **argv)
 		n = ft_atol(argv[i]);
 		if (error_syntax(argv[i]))
 		{
-			ft_printf("Non-Numeric Char Error\n");
 			free_list(head);
 			return ;
 		}
 		else if (n > INT_MAX || n < INT_MIN)
 		{
-			ft_printf("Bigger/Smaller than Max\n");
 			free_list(head);
 			return ;
 		}
 		else if (error_duplicates(*head, (int)n))
 		{
-			ft_printf("Duplicate Numbers\n");
 			free_list(head);
 			return ;
 		}

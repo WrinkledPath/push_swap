@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void	rotate_list(Node **head)
+void	rotate_list(t_list **head)
 {
-	Node *aux;
-	Node *tail;
+	t_list	*aux;
+	t_list	*tail;
 
 	if (!head || !*head || !(*head)->next)
 		return ;
@@ -18,10 +18,10 @@ void	rotate_list(Node **head)
 	tail->next = aux;
 }
 
-void	reverse_rotate(Node **head)
+void	reverse_rotate(t_list **head)
 {
-	Node *aux;
-	Node *tail;
+	t_list	*aux;
+	t_list	*tail;
 
 	if (!head || !*head || !(*head)->next)
 		return ;
@@ -35,10 +35,10 @@ void	reverse_rotate(Node **head)
 	*head = aux;
 }
 
-void	free_list(Node **head)
+int	free_list(t_list **head)
 {
-	Node *curr;
-	Node *next;
+	t_list	*curr;
+	t_list	*next;
 
 	if (!head || !*head)
 		return ;
@@ -50,11 +50,12 @@ void	free_list(Node **head)
 		curr = next;
 	}
 	*head = NULL;
+	return (-1);
 }
 
-void	swap(Node **root)
+void	swap(t_list **root)
 {
-	Node	*aux;
+	t_list	*aux;
 
 	if (!root || !*root)
 		return ;
@@ -65,4 +66,17 @@ void	swap(Node **root)
 	aux->next = *root;
 	(*root)->prev = aux;
 	*root = aux;
+}
+
+int	is_sorted(t_list *head)
+{
+	if (!head)
+		return (1);
+	while (head->next != NULL)
+	{
+		if (head->x > head->next->x)
+			return (0);
+		head = head->next;
+	}
+	return (1);
 }

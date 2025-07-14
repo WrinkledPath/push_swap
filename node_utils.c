@@ -1,33 +1,36 @@
 #include "push_swap.h"
 
-void	append_node(Node **stack, int value)
+int	append_node(t_list **stack, int value)
 {
-	Node *new_node;
-	Node *last;
-	
+	t_list	*new_node;
+	t_list	*last;
+
 	if (!stack)
 		return ;
 	new_node = create_node(value);
+	if (!new_node)
+		return (-1);
 	if (*stack == NULL)
 	{
 		*stack = new_node;
-		return ;
+		return (0);
 	}
 	last = find_last(*stack);
 	new_node->prev = last;
 	last->next = new_node;
+	return (0);
 }
 
-Node	*find_last(Node *stack)
+t_list	*find_last(t_list *stack)
 {
 	while (stack->next != NULL)
 		stack = stack->next;
 	return (stack);
 }
 
-void	push_node(Node **stack_a, Node **stack_b)
+void	push_node(t_list **stack_a, t_list **stack_b)
 {
-	Node *aux;
+	t_list	*aux;
 
 	if (*stack_a == NULL)
 		return ;
@@ -46,17 +49,17 @@ void	push_node(Node **stack_a, Node **stack_b)
 	*stack_b = aux;
 }
 
-Node	*create_node(int value)
+t_list	*create_node(int value)
 {
-	Node *new_node;
+	t_list	*new_node;
 
-	new_node = malloc(sizeof(Node));
+	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->x = value;
 	new_node->index = -1;
 	new_node->push_price = -1;
-	new_node->cheapest = false;
+	new_node->cheap = false;
 	new_node->above_median = false;
 	new_node->target_node = NULL;
 	new_node->next = NULL;
@@ -64,3 +67,7 @@ Node	*create_node(int value)
 	return (new_node);
 }
 
+int	same_direction(t_list *node)
+{
+	return (node->above_median == node->target_node->above_median);
+}

@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-static void	small_sort(Node **stack_a, Node **stack_b);
-static void	rotate_tiny_sort(Node **stack_a);
+static void	small_sort(t_list **stack_a, t_list **stack_b);
+static void	rotate_tiny_sort(t_list **stack_a);
 
-void	sort_pipe(Node **stack_a, Node **stack_b)
+void	sort_pipe(t_list **stack_a, t_list **stack_b)
 {
 	int		n;
 
@@ -20,9 +20,9 @@ void	sort_pipe(Node **stack_a, Node **stack_b)
 		turk_sort(stack_a, stack_b);
 }
 
-void	tiny_sort(Node **root)
+void	tiny_sort(t_list **root)
 {
-	Node *max;
+	t_list	*max;
 
 	max = find_max(*root);
 	if (max->prev == NULL)
@@ -33,7 +33,7 @@ void	tiny_sort(Node **root)
 		sa(root);
 }
 
-static void	small_sort(Node **stack_a, Node **stack_b)
+static void	small_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	s_len;
 	int	times;
@@ -44,7 +44,7 @@ static void	small_sort(Node **stack_a, Node **stack_b)
 	s_len = stack_len(*stack_a);
 	if (s_len == 5)
 		times = 2;
-	else 
+	else
 		times = 1;
 	i = 0;
 	while (i++ < times)
@@ -58,11 +58,11 @@ static void	small_sort(Node **stack_a, Node **stack_b)
 		pa(stack_a, stack_b);
 }
 
-static void	rotate_tiny_sort(Node **stack_a)
+static void	rotate_tiny_sort(t_list **stack_a)
 {
-	int	s_len;
-	int	p_min;
-	Node *min;
+	int		s_len;
+	int		p_min;
+	t_list	*min;
 
 	s_len = stack_len(*stack_a);
 	min = find_min(*stack_a);
@@ -79,9 +79,9 @@ static void	rotate_tiny_sort(Node **stack_a)
 	}
 }
 
-int		get_node_position(Node *stack, Node *target)
+int	get_node_position(t_list *stack, t_list *target)
 {
-	int i;
+	int	i;
 
 	if (!stack)
 		return (-1);
@@ -93,34 +93,3 @@ int		get_node_position(Node *stack, Node *target)
 	}
 	return (i);
 }
-
-Node *find_min(Node *root)
-{
-	Node *min;
-
-	min = root;
-	while (root != NULL)
-	{
-		if (root->x < min->x)
-			min = root;
-		root = root->next;
-	}
-	return (min);
-}
-
-Node	*find_max(Node *root)
-{
-	Node	*max;
-
-	if (!root)
-		return (NULL);
-	max = root;
-	while (root != NULL)
-	{
-		if (root->x > max->x)
-			max = root;
-		root = root->next;
-	}
-	return (max);
-}
-

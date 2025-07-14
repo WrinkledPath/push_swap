@@ -2,7 +2,7 @@
 NAME = push_swap
 
 # Source files
-SRC = main.c node_utils.c stack_utils.c push_swap.c testing_code.c init_node.c radix_sort.c small_sort.c rad_indexing.c print_sort.c turk_sort.c turk_assignment.c
+SRC = main.c node_utils.c stack_utils.c small_sort.c print_sort_a.c print_sort_b.c turk_sort.c turk_assignment.c indexing.c
 OBJ = $(SRC:.c=.o)
 
 # Compiler and flags

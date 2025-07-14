@@ -1,69 +1,70 @@
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdbool.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
-#include "libft.h"
-#include "ft_printf.h"
+# include <stdbool.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
+# include "libft.h"
+# include "ft_printf.h"
 
-typedef struct Node {
-	int	x;
-	int index;
-	int push_price;
-	int pos;
-	bool cheapest;
-	bool above_median;
-	struct Node *target_node;
-	struct Node *next;
-	struct Node *prev;
-} Node;
+typedef struct s_list
+{
+	int				x;
+	int				index;
+	int				push_price;
+	int				pos;
+	bool			cheapest;
+	bool			above_median;
+	struct s_list	*target_node;
+	struct s_list	*next;
+	struct s_list	*prev;
+}	t_list;
 
 // Linked List Moves
-int		stack_len(Node *curr);
-int		is_sorted(Node *head);
-void	append_node(Node **head, int value);
-void	rotate_list(Node **head);
-void	reverse_rotate(Node **head);
-void	push_node(Node **stack_a, Node **stack_b);
-void	free_list(Node **head);
-void	init_stack_a(Node **head, char **argv);
-void	swap(Node **root);
-Node	*find_last(Node *stack);
-Node	*create_node(int value);
+int		stack_len(t_list *curr);
+int		is_sorted(t_list *head);
+int		free_list(t_list **head);
+int		init_stack_a(t_list **head, char **argv);
+int		append_node(t_list **head, int value);
+void	rotate_list(t_list **head);
+void	reverse_rotate(t_list **head);
+void	push_node(t_list **stack_a, t_list **stack_b);
+void	swap(t_list **root);
+t_list	*find_last(t_list *stack);
+t_list	*create_node(int value);
 
-// Radix Sort
-int		get_node_position(Node *stack, Node *target);
-void	assign_index(Node *root);
-void	sort_pipe(Node **stack_a, Node **stack_b);
-void	radix_sort(Node **stack_a, Node **stack_b);
-void	tiny_sort(Node **root);
-Node	*find_min(Node *root);
-Node	*find_max(Node *root);
+// Stack Utils
+int		get_node_position(t_list *stack, t_list *target);
+void	assign_index(t_list *root);
+void	sort_pipe(t_list **stack_a, t_list **stack_b);
+void	tiny_sort(t_list **root);
+t_list	*find_min(t_list *root);
+t_list	*find_max(t_list *root);
+int		same_direction(t_list *node);
 
 // Turk Sort
-Node 	*turk_assignment(Node *stack_a, Node *stack_b);
-void	turk_sort(Node **stack_a, Node **stack_b);
-void	set_medium(Node *stack_a, Node *stack_b);
-void	set_pos(Node *stack_a, Node *stack_b);
+t_list	*turk_assignment(t_list *stack_a, t_list *stack_b);
+t_list	*set_cheap(t_list *stack_b);
+void	turk_sort(t_list **stack_a, t_list **stack_b);
+void	set_medium(t_list *stack_a, t_list *stack_b);
+void	set_pos(t_list *stack_a, t_list *stack_b);
 
 // Print Functions
-void	sa(Node **root);
-void	ra(Node **root);
-void	rra(Node **root);
-void	rb(Node **root);
-void	rrb(Node **root);
-void	rr(Node **stack_a, Node **stack_b);
-void	rrr(Node **stack_a, Node **stack_b);
-void	pa(Node **stack_a, Node **stack_b);
-void	pb(Node **stack_a, Node **stack_b);
+void	sa(t_list **root);
+void	ra(t_list **root);
+void	rra(t_list **root);
+void	rb(t_list **root);
+void	rrb(t_list **root);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
+void	pb(t_list **stack_a, t_list **stack_b);
 
 // Testing Functions
-int		validate_index_range(Node *stack);
-void	print_pipe(Node *stack_a, Node *stack_b);
-void	print_small(Node *stack_a, Node *stack_b);
-void	print_both(Node *stack_a, Node *stack_b);
+int		validate_index_range(t_list *stack);
+void	print_pipe(t_list *stack_a, t_list *stack_b);
+void	print_small(t_list *stack_a, t_list *stack_b);
+void	print_both(t_list *stack_a, t_list *stack_b);
 
 #endif

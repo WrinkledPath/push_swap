@@ -41,7 +41,7 @@ int	free_list(t_list **head)
 	t_list	*next;
 
 	if (!head || !*head)
-		return ;
+		return (-1);
 	curr = *head;
 	while (curr != NULL)
 	{

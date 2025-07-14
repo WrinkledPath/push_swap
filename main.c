@@ -70,9 +70,10 @@ static int	error_syntax(char *argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (argv[i] < '0' || argv[i] > '9')
-			return (1);
-		else if (argv[i] != '+' && argv[i] != '-' && argv[i] != ' ')
+		if ((argv[i] < '0' || argv[i] > '9')
+			&& argv[i] != '+'
+			&& argv[i] != '-'
+			&& argv[i] != ' ')
 			return (1);
 		i++;
 	}

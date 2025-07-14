@@ -8,15 +8,14 @@ OBJ = $(SRC:.c=.o)
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-CFLAGS += -I/usr/lib/modules/6.1.52-valve16-1-neptune-61/build/include/uapi \
-          -I/usr/lib/modules/6.1.52-valve16-1-neptune-61/build/include
+CFLAGS += -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include/uapi \
+          -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include
 
 # Paths to libraries and includes
 LIBFT_DIR = ./local_includes/Libft
-PRINTF_DIR = ./local_includes/ft_printf
 
-INCLUDES = -I. -I$(LIBFT_DIR) -I$(PRINTF_DIR)
-LIBS = $(LIBFT_DIR)/libft.a $(PRINTF_DIR)/ft_printf.a
+INCLUDES = -I. -I$(LIBFT_DIR)
+LIBS = $(LIBFT_DIR)/libft.a
 
 # Default target
 all: $(NAME)

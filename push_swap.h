@@ -6,7 +6,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include "libft.h"
-# include "ft_printf.h"
 
 typedef struct s_list
 {
@@ -14,7 +13,7 @@ typedef struct s_list
 	int				index;
 	int				push_price;
 	int				pos;
-	bool			cheapest;
+	bool			cheap;
 	bool			above_median;
 	struct s_list	*target_node;
 	struct s_list	*next;

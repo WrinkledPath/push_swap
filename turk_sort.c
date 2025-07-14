@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
 static void	rotate_big_sort(t_list **stack_a, t_list **stack_b, t_list *cheap);
-static int	same_direction(t_list *stack_b);
 static int	calculate_rotations(t_list *root);
 static void	final_rotations(t_list **stack_a, t_list **stack_b, t_list *cheap);
+static void	rotate_rest(t_list **stack_a);
 
 void	turk_sort(t_list **stack_a, t_list **stack_b)
 {
@@ -25,10 +25,10 @@ void	turk_sort(t_list **stack_a, t_list **stack_b)
 	}
 	set_pos(*stack_a, *stack_b);
 	set_medium(*stack_a, *stack_b);
-	rotate_rest(stack_a, stack_b);
+	rotate_rest(stack_a);
 }
 
-static void	rotate_rest(t_list **stack_a, t_list **stack_b)
+static void	rotate_rest(t_list **stack_a)
 {
 	t_list	*smallest;
 

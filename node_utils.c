@@ -6,7 +6,7 @@ int	append_node(t_list **stack, int value)
 	t_list	*last;
 
 	if (!stack)
-		return ;
+		return (-1);
 	new_node = create_node(value);
 	if (!new_node)
 		return (-1);

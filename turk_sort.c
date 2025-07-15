@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turk_sort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ywagner <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/15 11:26:06 by ywagner           #+#    #+#             */
+/*   Updated: 2025/07/15 13:27:27 by ywagner          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
-static void	rotate_big_sort(t_list **stack_a, t_list **stack_b, t_list *cheap);
 static int	calculate_rotations(t_list *root);
+static void	rotate_big_sort(t_list **stack_a, t_list **stack_b, t_list *cheap);
 static void	final_rotations(t_list **stack_a, t_list **stack_b, t_list *cheap);
 static void	rotate_rest(t_list **stack_a);
 

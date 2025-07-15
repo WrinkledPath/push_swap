@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ywagner <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/15 11:25:29 by ywagner           #+#    #+#             */
+/*   Updated: 2025/07/15 16:20:35 by ywagner          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -33,21 +44,21 @@ void	swap(t_list **root);
 t_list	*find_last(t_list *stack);
 t_list	*create_node(int value);
 
-// Stack Utils
+// Basic Sort
 int		get_node_position(t_list *stack, t_list *target);
 void	assign_index(t_list *root);
 void	sort_pipe(t_list **stack_a, t_list **stack_b);
 void	tiny_sort(t_list **root);
 t_list	*find_min(t_list *root);
 t_list	*find_max(t_list *root);
-int		same_direction(t_list *node);
 
 // Turk Sort
-t_list	*turk_assignment(t_list *stack_a, t_list *stack_b);
-t_list	*set_cheap(t_list *stack_b);
+int		same_direction(t_list *node);
 void	turk_sort(t_list **stack_a, t_list **stack_b);
 void	set_medium(t_list *stack_a, t_list *stack_b);
 void	set_pos(t_list *stack_a, t_list *stack_b);
+t_list	*turk_assignment(t_list *stack_a, t_list *stack_b);
+t_list	*set_cheap(t_list *stack_b);
 
 // Print Functions
 void	sa(t_list **root);
@@ -59,11 +70,5 @@ void	rr(t_list **stack_a, t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
-
-// Testing Functions
-int		validate_index_range(t_list *stack);
-void	print_pipe(t_list *stack_a, t_list *stack_b);
-void	print_small(t_list *stack_a, t_list *stack_b);
-void	print_both(t_list *stack_a, t_list *stack_b);
 
 #endif

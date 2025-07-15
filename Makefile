@@ -1,42 +1,56 @@
-# Project name
-NAME = push_swap
+# Compiler and flags
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror -Iinc/Libft -Iinc/get_next_line -I.
 
 # Source files
-SRC = main.c node_utils.c stack_utils.c small_sort.c print_sort_a.c print_sort_b.c turk_sort.c turk_assignment.c indexing.c
-OBJ = $(SRC:.c=.o)
+SRCS        = init_stack.c indexing.c node_utils.c stack_utils.c \
+              small_sort.c turk_sort.c turk_assignment.c print_sort_a.c \
+              print_sort_b.c
 
-# Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-CFLAGS += -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include/uapi \
-          -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include
+OBJS        = $(SRCS:.c=.o)
 
-# Paths to libraries and includes
-LIBFT_DIR = ./local_includes/Libft
+# Unique source files
+PUSH_SRC    = main.c
+PUSH_OBJ    = $(PUSH_SRC:.c=.o)
+BONUS_SRC   = checker.c
+BONUS_OBJ   = $(BONUS_SRC:.c=.o)
 
-INCLUDES = -I. -I$(LIBFT_DIR)
-LIBS = $(LIBFT_DIR)/libft.a
+NAME        = push_swap
+BONUS_NAME  = checker
 
-# Default target
-all: $(NAME)
+# Libraries
+LIBFT_DIR   = inc/Libft
+GNL_DIR     = inc/get_next_line
+LIBFT       = $(LIBFT_DIR)/libft.a
+GNL         = $(GNL_DIR)/get_next_line.a
 
-# Linking final executable
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -I. $(OBJ) $(LIBS) -o $(NAME)
+# Default rule
+all: $(LIBFT) $(GNL) clean_bonus $(NAME)
 
-# Compiling object files
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-# Clean object files
+$(GNL):
+	$(MAKE) -C $(GNL_DIR)
+
+$(NAME): $(OBJS) $(PUSH_OBJ)
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(GNL) -o $(NAME)
+
+bonus: $(LIBFT) $(GNL) $(OBJS) $(BONUS_OBJ) $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJ) $(LIBFT) $(GNL) -o $(BONUS_NAME)
+
+clean_bonus:
+	rm -f $(BONUS_NAME) $(BONUS_OBJ)
+
 clean:
-	rm -f $(OBJ)
+	$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(GNL_DIR)
+	rm -f $(OBJS) $(PUSH_OBJ)
 
-# Clean everything
-fclean: clean
+fclean: clean clean_bonus
+	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C $(GNL_DIR)
 	rm -f $(NAME)
 
-# Rebuild
 re: fclean all
-
 

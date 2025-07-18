@@ -48,7 +48,7 @@ static int	count_words(const char *str, char del)
 }
 
 //Frees array when necessary
-void	free_split(char **array, int current)
+static void	free_split(char **array, int current)
 {
 	while (current >= 0)
 		free(array[current--]);

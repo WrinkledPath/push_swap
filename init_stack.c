@@ -19,7 +19,7 @@ int	init_stack_a(t_list **head, char **argv)
 	int		i;
 	long	n;
 
-	if (!head || (!*head && !argv[1]))
+	if (!argv && !*argv)
 		return (-1);
 	i = 0;
 	while (argv[i] != NULL)
@@ -77,10 +77,11 @@ int	stack_len(t_list *curr)
 	int		down;
 	t_list	*p_prev;
 
+	if (!curr)
+		return (0);
 	up = 0;
 	down = 0;
-	if (curr)
-		p_prev = curr->prev;
+	p_prev = curr->prev;
 	while (p_prev)
 	{
 		p_prev = p_prev->prev;

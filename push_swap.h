@@ -32,11 +32,12 @@ typedef struct s_list
 }	t_list;
 
 // Linked List Moves
+int		handle_args(t_list **stack_a, char **argv, int argc);
 int		stack_len(t_list *curr);
 int		is_sorted(t_list *head);
-int		free_list(t_list **head);
 int		init_stack_a(t_list **head, char **argv);
 int		append_node(t_list **head, int value);
+int		free_list(t_list **head);
 void	rotate_list(t_list **head);
 void	reverse_rotate(t_list **head);
 void	push_node(t_list **stack_a, t_list **stack_b);
@@ -61,14 +62,14 @@ t_list	*turk_assignment(t_list *stack_a, t_list *stack_b);
 t_list	*set_cheap(t_list *stack_b);
 
 // Print Functions
-void	sa(t_list **root);
-void	ra(t_list **root);
-void	rra(t_list **root);
-void	rb(t_list **root);
-void	rrb(t_list **root);
-void	rr(t_list **stack_a, t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
+void	sa(t_list **root, bool print);
+void	ra(t_list **root, bool print);
+void	rra(t_list **root, bool print);
+void	rb(t_list **root, bool print);
+void	rrb(t_list **root, bool print);
+void	rr(t_list **stack_a, t_list **stack_b, bool print);
+void	rrr(t_list **stack_a, t_list **stack_b, bool print);
+void	pa(t_list **stack_a, t_list **stack_b, bool print);
+void	pb(t_list **stack_a, t_list **stack_b, bool print);
 
 #endif

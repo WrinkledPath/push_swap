@@ -81,9 +81,7 @@ void	swap(t_list **root)
 
 int	is_sorted(t_list *head)
 {
-	if (!head)
-		return (1);
-	while (head->next != NULL)
+	while (head && head->next)
 	{
 		if (head->x > head->next->x)
 			return (0);

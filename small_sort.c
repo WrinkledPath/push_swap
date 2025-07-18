@@ -37,11 +37,11 @@ void	tiny_sort(t_list **root)
 
 	max = find_max(*root);
 	if (max->prev == NULL)
-		ra(root);
+		ra(root, true);
 	else if (max->next != NULL)
-		rra(root);
+		rra(root, true);
 	if ((*root)->x > (*root)->next->x)
-		sa(root);
+		sa(root, true);
 }
 
 static void	small_sort(t_list **stack_a, t_list **stack_b)
@@ -61,12 +61,12 @@ static void	small_sort(t_list **stack_a, t_list **stack_b)
 	while (i++ < times)
 	{
 		rotate_tiny_sort(stack_a);
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, true);
 	}
 	tiny_sort(stack_a);
 	i = 0;
 	while (i++ < times)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, true);
 }
 
 static void	rotate_tiny_sort(t_list **stack_a)
@@ -81,12 +81,12 @@ static void	rotate_tiny_sort(t_list **stack_a)
 	if (p_min <= s_len / 2)
 	{
 		while (*stack_a != min)
-			ra(stack_a);
+			ra(stack_a, true);
 	}
 	else
 	{
 		while (*stack_a != min)
-			rra(stack_a);
+			rra(stack_a, true);
 	}
 }
 

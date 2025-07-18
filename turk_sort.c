@@ -23,16 +23,16 @@ void	turk_sort(t_list **stack_a, t_list **stack_b)
 	while (stack_len(*stack_a) > 3)
 	{
 		if ((*stack_a)->index > (stack_len(*stack_a) / 2))
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, true);
 		else
-			ra(stack_a);
+			ra(stack_a, true);
 	}
 	tiny_sort(stack_a);
 	while (*stack_b)
 	{
 		cheap = turk_assignment(*stack_a, *stack_b);
 		rotate_big_sort(stack_a, stack_b, cheap);
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, true);
 	}
 	set_pos(*stack_a, *stack_b);
 	set_medium(*stack_a, *stack_b);
@@ -46,10 +46,10 @@ static void	rotate_rest(t_list **stack_a)
 	smallest = find_min(*stack_a);
 	if (smallest->above_median)
 		while (*stack_a != smallest)
-			ra(stack_a);
+			ra(stack_a, true);
 	else
 		while (*stack_a != smallest)
-			rra(stack_a);
+			rra(stack_a, true);
 }
 
 static void	rotate_big_sort(t_list **stack_a, t_list **stack_b, t_list *cheap)
@@ -62,9 +62,9 @@ static void	rotate_big_sort(t_list **stack_a, t_list **stack_b, t_list *cheap)
 	while (a_rot != 0 && b_rot != 0 && same_direction(cheap))
 	{
 		if (cheap->above_median)
-			rr(stack_a, stack_b);
+			rr(stack_a, stack_b, true);
 		else
-			rrr(stack_a, stack_b);
+			rrr(stack_a, stack_b, true);
 		a_rot--;
 		b_rot--;
 	}
@@ -76,16 +76,16 @@ static void	final_rotations(t_list **stack_a, t_list **stack_b, t_list *cheap)
 	while (*stack_b != cheap)
 	{
 		if (cheap->above_median)
-			rb(stack_b);
+			rb(stack_b, true);
 		else
-			rrb(stack_b);
+			rrb(stack_b, true);
 	}
 	while (*stack_a != cheap->target_node)
 	{
 		if (cheap->target_node->above_median)
-			ra(stack_a);
+			ra(stack_a, true);
 		else
-			rra(stack_a);
+			rra(stack_a, true);
 	}
 }
 

@@ -1,8 +1,7 @@
 NAME = get_next_line.a
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-CFLAGS += -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include/uapi \
-          -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include
+
 AR = ar rcs
 RM = rm -f
 

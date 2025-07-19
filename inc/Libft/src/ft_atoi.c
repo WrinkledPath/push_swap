@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywagner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 17:50:38 by ywagner           #+#    #+#             */
-/*   Updated: 2025/07/19 19:08:11 by ywagner          ###   ########.fr       */
+/*   Created: 2025/02/12 17:41:28 by ywagner           #+#    #+#             */
+/*   Updated: 2025/02/12 18:44:35 by ywagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	unsigned long	i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+//Converts a string into an int
 
-	if (!s1)
-		return (*s2);
-	if (!s2)
-		return (*s1);
-	str1 = (unsigned char *) s1;
-	str2 = (unsigned char *) s2;
-	i = 0;
-	while (str1[i])
+int	ft_atoi(const char *str)
+{
+	int	n;
+	int	sign;
+
+	n = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		++str;
+	if (*str == '+' || *str == '-')
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		if (str1[i] == '\0' || str2[i] == '\0')
-			return (0);
-		i++;
+		if (*str == '-')
+			sign = -1;
+		++str;
 	}
-	return (0);
+	while (*str >= '0' && *str <= '9')
+	{
+		n = (n * 10) + (*str - '0');
+		str++;
+	}
+	return (n * sign);
 }

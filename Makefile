@@ -1,8 +1,6 @@
 # Compiler and flags
 CC      = gcc
-CFLAGS  = -Wall -Wextra -Werror -Iinc/Libft -Iinc/get_next_line -I. -g
-CFLAGS += -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include/uapi \
-          -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include
+CFLAGS  = -Wall -Wextra -Werror -Iinc/Libft -Iinc/get_next_line -I.
 
 # Source files
 SRCS        = init_stack.c indexing.c node_utils.c stack_utils.c \

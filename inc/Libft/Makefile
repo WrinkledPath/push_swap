@@ -1,8 +1,6 @@
 # Compiler and flags
 CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror -I. -g
-CFLAGS += -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include/uapi \
-          -I/usr/lib/modules/6.11.11-valve20-1-neptune-611-gd35c3ed359a0/build/include
 
 # Source and object files
 SRCS    = src/ft_atol.c src/ft_isprint.c src/ft_putchar_fd.c src/ft_striteri.c src/ft_strnstr.c \
